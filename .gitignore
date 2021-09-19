@@ -1,0 +1,4 @@
+# backend_dependencies
+BACKEND/node_modules
+BACKEND/.env
+BACKEND/.prettierrc

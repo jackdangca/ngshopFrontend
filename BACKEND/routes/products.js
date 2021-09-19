@@ -95,12 +95,12 @@ router.delete('/:id', (req, res)=>{
             return res.status(404).json({success: false , message: "product not found!"})
         }
     }).catch(err=>{
-       return res.status(500).json({success: false, error: err}) 
+        return res.status(500).json({success: false, error: err}) 
     })
-})
+});
 
 router.get(`/get/count`, async (req, res) =>{
-    const productCount = await Product.countDocuments((count) => count)
+    const productCount = await Product.countDocuments({});
 
     if(!productCount) {
         res.status(500).json({success: false})
@@ -108,7 +108,7 @@ router.get(`/get/count`, async (req, res) =>{
     res.send({
         productCount: productCount
     });
-})
+});
 
 router.get(`/get/featured/:count`, async (req, res) =>{
     const count = req.params.count ? req.params.count : 0
@@ -118,6 +118,6 @@ router.get(`/get/featured/:count`, async (req, res) =>{
         res.status(500).json({success: false})
     } 
     res.send(products);
-})
+});
 
 module.exports =router;

@@ -1,0 +1,671 @@
+{
+	"info": {
+		"_postman_id": "f45efbe6-3678-4acc-b7bc-88ea21abfa4d",
+		"name": "NgShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products?categories=6146027bbf6a05548565fae2",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "categories",
+									"value": "6146027bbf6a05548565fae2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjE2ODdlMWJlMmU5OWExNThjMDg1MDQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzIxMjc5MjIsImV4cCI6MTYzMjIxNDMyMn0.Oou19fx4oLl0iv82EJHQt4Czvwx3Q6nRJ4nqGr2SRT4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products/:id",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6146e9acc519b63e76c30a91"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get featured product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products/get/featured/:count",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"get",
+								"featured",
+								":count"
+							],
+							"variable": [
+								{
+									"key": "count",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products/get/count",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"get",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jogge\",\r\n    \"image\": \"someUrl\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products/:id",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjE2ODdlMWJlMmU5OWExNThjMDg1MDQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzIxNTAwMjMsImV4cCI6MTYzMjIzNjQyM30.eLxqETCUbA2MzNs1G9_q_OwWtZmsHouzdxdkCg28EVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Product6",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Product 6 description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Product 6 barnd",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "6146027bbf6a05548565fae2",
+									"type": "text"
+								},
+								{
+									"key": "countInStock",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "numReviews",
+									"value": "21",
+									"type": "text"
+								},
+								{
+									"key": "isFeatured",
+									"value": "true",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"product 1\",\r\n    \"description\": \"product 1 description new\",\r\n    \"image\": \"product1/image.jpg\",\r\n    \"brand\": \"product 1 brand\",\r\n    \"price\": 25,\r\n    \"category\": \"6146027bbf6a05548565fae2\",\r\n    \"countInStock\": 10,\r\n    \"rating\": 4,\r\n    \"numReviews\": 22,\r\n    \"isFeatured\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/products/6146ba9f",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"6146ba9f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/categories/6146027bbf6a05548565fae2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"6146027bbf6a05548565fae2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"anothe health\",\r\n    \"icon\":\"health-icon\",\r\n    \"color\":\"#123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjE2ODdlMWJlMmU5OWExNThjMDg1MDQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzIwNjUwNzcsImV4cCI6MTYzMjE1MTQ3N30.VgcuCOJJpt-KB5LhFqxIE7SuCE1HcY9JjhTuqJoSpbs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/users/",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjE2ODdlMWJlMmU5OWExNThjMDg1MDQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzIwNjU2NDYsImV4cCI6MTYzMjE1MjA0Nn0.e43Mc3xzR3ZG0mB-iF9EWhWq0yI3G1JYzIedxEU_7vg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/users/get/count",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"get",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjE2ODdlMWJlMmU5OWExNThjMDg1MDQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzIwNTUzMjQsImV4cCI6MTYzMjE0MTcyNH0.IO-e3XnTwwVaxMJZztVlQktshgqFM1GGmfpgIoZpKyo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vishal\",\r\n    \"email\": \"vishalchaware144@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"phone\": \"8390787656\",\r\n    \"isAdmin\": true,\r\n    \"street\": \"Street 100\",\r\n    \"apartment\": \"Apartment 202\",\r\n    \"zip\": \"15002\",\r\n    \"city\":\"Newyork\",\r\n    \"country\": \"USA\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/users",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjE2ODdlMWJlMmU5OWExNThjMDg1MDQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzIwNTUzMjQsImV4cCI6MTYzMjE0MTcyNH0.IO-e3XnTwwVaxMJZztVlQktshgqFM1GGmfpgIoZpKyo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vishal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/users/:id",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5f168810be2e99a158c08505"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/users/:id",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"fadinoh@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/users/login",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjE2ODdlMWJlMmU5OWExNThjMDg1MDQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzIwNTUzMjQsImV4cCI6MTYzMjE0MTcyNH0.IO-e3XnTwwVaxMJZztVlQktshgqFM1GGmfpgIoZpKyo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local_BaseUrl}}/api/v1/users/:id",
+							"host": [
+								"{{local_BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local_BaseUrl",
+			"value": ""
+		},
+		{
+			"key": "prod_BaseUrl",
+			"value": ""
+		}
+	]
+}

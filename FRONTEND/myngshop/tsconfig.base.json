@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@myngshop/ui": ["libs/ui/src/index.ts"]
+      "@myngshop/orders": ["libs/orders/src/index.ts"],
+      "@myngshop/products": ["libs/products/src/index.ts"],
+      "@myngshop/ui": ["libs/ui/src/index.ts"],
+      "@myngshop/users": ["libs/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

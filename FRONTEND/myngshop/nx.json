@@ -40,6 +40,9 @@
     "ngshop-e2e": {
       "tags": [],
       "implicitDependencies": ["ngshop"]
+    },
+    "ui": {
+      "tags": []
     }
   }
 }

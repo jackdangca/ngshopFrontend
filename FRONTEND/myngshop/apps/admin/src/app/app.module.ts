@@ -19,7 +19,9 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ColorPickerModule } from 'primeng/colorpicker';
 
 
 const UX_MODULE = [
@@ -29,6 +31,8 @@ const UX_MODULE = [
   ButtonModule,
   TableModule,
   ToastModule,
+  ConfirmDialogModule,
+  ColorPickerModule
 ];
 
 const routes: Routes = [
@@ -64,7 +68,7 @@ const routes: Routes = [
     ...UX_MODULE
     
   ],
-  providers: [CategoriesService, MessageService],
+  providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

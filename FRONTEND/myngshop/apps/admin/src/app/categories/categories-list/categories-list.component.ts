@@ -3,9 +3,7 @@ import { CategoriesService, Category } from '@myngshop/products';
 
 @Component({
   selector: 'admin-categories-list',
-  templateUrl: './categories-list.component.html',
-  styles: [
-  ]
+  templateUrl: './categories-list.component.html'
 })
 export class CategoriesListComponent implements OnInit {
 

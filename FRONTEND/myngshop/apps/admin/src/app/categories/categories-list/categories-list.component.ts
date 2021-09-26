@@ -29,10 +29,15 @@ export class CategoriesListComponent implements OnInit {
       header: 'Delete Category',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {   
-        this.categoriesService.deleteCategory(categoryId).subscribe(response => {
-          this._getCategories();
-          this.messageService.add({severity:'success', summary:'Success', detail:'Category is deleted!'});
-        },(error) => {
+        this.categoriesService.deleteCategory(categoryId).subscribe(
+          () => {
+            this._getCategories();
+            this.messageService.add({
+              severity:'success', 
+              summary:'Success', 
+              detail:'Category is deleted!'
+            });
+        },() => {
             this.messageService.add({severity:'error', summary:'Error', detail:'Category is not deleted!'});
           }
         );

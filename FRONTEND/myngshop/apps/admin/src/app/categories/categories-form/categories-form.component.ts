@@ -13,6 +13,7 @@ import { timer } from 'rxjs';
   ]
 })
 export class CategoriesFormComponent implements OnInit {
+
   form: FormGroup = new FormGroup({});
   isSubmitted = false;
   editmode = false;
@@ -60,7 +61,7 @@ export class CategoriesFormComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: `Category is created!`
+          detail: `Category ${category.name} is created!`
         });
         timer(2000)
           .toPromise()

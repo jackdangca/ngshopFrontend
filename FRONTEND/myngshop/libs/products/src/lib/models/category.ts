@@ -1,5 +1,5 @@
 export class Category {
-    id? : string;
+    id? : string | undefined;
     name? : string;
     icon? : string;
     color? : string;

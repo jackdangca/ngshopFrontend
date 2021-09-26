@@ -11,7 +11,9 @@ import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
-import { CategoriesService } from '@myngshop/products';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { CategoriesService, ProductsService } from '@myngshop/products';
 
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -22,6 +24,12 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { EditorModule } from 'primeng/editor';
+
 
 
 const UX_MODULE = [
@@ -32,7 +40,12 @@ const UX_MODULE = [
   TableModule,
   ToastModule,
   ConfirmDialogModule,
-  ColorPickerModule
+  ColorPickerModule,
+  InputNumberModule,
+  DropdownModule,
+  InputTextareaModule,
+  InputSwitchModule,
+  EditorModule
 ];
 
 const routes: Routes = [
@@ -55,13 +68,25 @@ const routes: Routes = [
       {
         path: 'categories/form/:id',
         component: CategoriesFormComponent
+      },
+      {
+        path: 'products',
+        component: ProductsListComponent
+      },
+      {
+        path: 'products/form',
+        component: ProductsFormComponent
+      },
+      {
+        path: 'products/form/:id',
+        component: ProductsFormComponent
       }
     ],
   },
 ];
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -72,7 +97,7 @@ const routes: Routes = [
     ...UX_MODULE
     
   ],
-  providers: [CategoriesService, MessageService, ConfirmationService],
+  providers: [CategoriesService, ProductsService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

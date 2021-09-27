@@ -65,11 +65,13 @@
 					}}
 				</div>
 			</div>
-			<div class="grid" style="color: green">
-				<div class="col-2 p-offset-8 p-text-bold">Total Price</div>
-
-				<div class="col-2 p-text-bold">
-					{{ order.totalPrice | currency }}
+			<div class="grid" style="color: green;border-top: 1px solid lightgrey">
+				<div class="col-8"></div>
+				<div class="col-2"> <h4> Total Price </h4></div>
+				<div class="col-2">
+					<h4>
+						{{ order.totalPrice | currency }}
+					</h4>
 				</div>
 			</div>
 		</p-fieldset>

@@ -16,6 +16,8 @@ import { ProductsFormComponent } from './pages/products/products-form/products-f
 import { CategoriesService, ProductsService } from '@myngshop/products';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -97,6 +99,14 @@ const routes: Routes = [
 				path: 'users/form/:id',
 				component: UsersFormComponent,
 			},
+			{
+				path: 'orders',
+				component: OrdersListComponent
+			},
+			{
+				path: 'orders/:id',
+				component: OrdersDetailComponent
+			}
 		],
 	},
 ];
@@ -113,6 +123,8 @@ const routes: Routes = [
 		ProductsFormComponent,
 		UsersListComponent,
 		UsersFormComponent,
+  		OrdersListComponent,
+  		OrdersDetailComponent,
 	],
 	imports: [
 		BrowserModule,

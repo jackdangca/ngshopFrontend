@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order, OrdersService } from '@myngshop/orders';
 import { ConfirmationService, MessageService } from 'primeng/api';
-// import { ORDER_STATUS } from '../order.constants';
+import { ORDER_STATUS } from '../order.constants';
 
 @Component({
 	selector: 'admin-orders-list',
@@ -11,28 +11,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class OrdersListComponent implements OnInit {
 	orders: Order[] = [];
-	orderStatus = {
-		0: {
-			label: 'Pending',
-			color: 'primary',
-		},
-		1: {
-			label: 'Processed',
-			color: 'warning',
-		},
-		2: {
-			label: 'Shipped',
-			color: 'warning',
-		},
-		3: {
-			label: 'Delivered',
-			color: 'success',
-		},
-		4: {
-			label: 'Failed',
-			color: 'danger',
-		},
-	};
+	orderStatus = ORDER_STATUS;
 
 	constructor(
 		private ordersService: OrdersService,

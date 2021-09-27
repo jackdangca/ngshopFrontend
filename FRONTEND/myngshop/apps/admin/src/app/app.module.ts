@@ -35,6 +35,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { EditorModule } from 'primeng/editor';
 import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
+import { FieldsetModule } from 'primeng/fieldset';
 
 const UX_MODULE = [
 	CardModule,
@@ -52,6 +53,7 @@ const UX_MODULE = [
 	EditorModule,
 	TagModule,
 	InputMaskModule,
+	FieldsetModule
 ];
 
 const routes: Routes = [

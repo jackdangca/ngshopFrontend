@@ -34,7 +34,7 @@ router.post('/', async (req,res)=>{
         zip: req.body.zip,
         city: req.body.city,
         country: req.body.country,
-    })
+    });
     user = await user.save();
 
     if(!user)

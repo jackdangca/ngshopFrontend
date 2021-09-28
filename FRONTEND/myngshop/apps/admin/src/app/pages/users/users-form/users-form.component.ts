@@ -15,7 +15,7 @@ export class UsersFormComponent implements OnInit {
 	form: FormGroup = new FormGroup({});
 	isSubmitted = false;
 	editmode = false;
-	currentUserId: string | undefined;
+	currentUserId: string;
 	countries:  any[] = [];
 	constructor(
 		private messageService: MessageService,
@@ -42,7 +42,7 @@ export class UsersFormComponent implements OnInit {
 			apartment: [''],
 			zip: [''],
 			city: [''],
-			country: ['IN'],
+			country: [''],
 		});
 	}
 
@@ -137,6 +137,7 @@ export class UsersFormComponent implements OnInit {
 			zip: this.userForm.zip.value,
 			city: this.userForm.city.value,
 			country: this.userForm.country.value,
+			password: this.userForm.password.value,
 		};
 		if (this.editmode) {
 			this._updateUser(user);

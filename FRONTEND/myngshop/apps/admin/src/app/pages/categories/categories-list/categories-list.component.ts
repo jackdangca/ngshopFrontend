@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService, Category } from '@myngshop/products';
@@ -22,7 +23,6 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this._getCategories();
-		this.endsubs$.complete();
 	}
 
 	ngOnDestroy() {
@@ -36,23 +36,26 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
 			header: 'Delete Category',
 			icon: 'pi pi-exclamation-triangle',
 			accept: () => {
-				this.categoriesService.deleteCategory(categoryId).subscribe(
-					() => {
-						this._getCategories();
-						this.messageService.add({
-							severity: 'success',
-							summary: 'Success',
-							detail: 'Category is deleted!',
-						});
-					},
-					() => {
-						this.messageService.add({
-							severity: 'error',
-							summary: 'Error',
-							detail: 'Category is not deleted!',
-						});
-					}
-				);
+				this.categoriesService
+					.deleteCategory(categoryId)
+					.pipe(takeUntil(this.endsubs$))
+					.subscribe(
+						() => {
+							this._getCategories();
+							this.messageService.add({
+								severity: 'success',
+								summary: 'Success',
+								detail: 'Category is deleted!',
+							});
+						},
+						() => {
+							this.messageService.add({
+								severity: 'error',
+								summary: 'Error',
+								detail: 'Category is not deleted!',
+							});
+						}
+					);
 			},
 		});
 	}

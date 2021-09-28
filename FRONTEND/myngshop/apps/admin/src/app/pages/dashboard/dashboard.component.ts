@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrdersService } from '@myngshop/orders';
 import { ProductsService } from '@myngshop/products';
 import { UsersService } from '@myngshop/users';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
 	selector: 'admin-dashboard',
 	templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 	statistics = [];
+	endsubs$: Subject<any> = new Subject();
 	constructor(
 		private userService: UsersService,
 		private productService: ProductsService,
@@ -22,16 +25,15 @@ export class DashboardComponent implements OnInit {
 			this.productService.getProductsCount(),
 			this.userService.getUsersCount(),
 			this.ordersService.getTotalSales(),
-		]).subscribe((values) => {
-			this.statistics = values;
-		});
-		// this.ordersService.getOrdersCount();
-		// this.productService.getProductsCount();
-		// this.userService.getUsersCount();
-		// this.ordersService.getTotalSales();
+		])
+			.pipe(takeUntil(this.endsubs$))
+			.subscribe((values) => {
+				this.statistics = values;
+			});
 	}
 
-	// order() {
-	// 	this.ordersService.getOrdersCount();
-	// }
+	ngOnDestroy() {
+		this.endsubs$.next();
+		this.endsubs$.complete();
+	}
 }

@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from '@myngshop/orders';
 import { MessageService } from 'primeng/api';
 import { ORDER_STATUS } from '../order.constants';
-
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'admin-orders-detail',
 	templateUrl: './orders-detail.component.html',
 	styles: [],
 })
-export class OrdersDetailComponent implements OnInit {
+export class OrdersDetailComponent implements OnInit, OnDestroy {
 	order: any;
 	orderStatuses = [];
 	selectedStatus: any;
 	orderItems: any;
+	endsubs$: Subject<any> = new Subject();
 
 	constructor(
 		private orderService: OrdersService,
@@ -25,7 +27,12 @@ export class OrdersDetailComponent implements OnInit {
 
 	ngOnInit(): void {
 		this._mapOrderStatus();
-    	this._getOrder();
+		this._getOrder();
+	}
+
+	ngOnDestroy() {
+		this.endsubs$.next();
+		this.endsubs$.complete();
 	}
 
 	private _mapOrderStatus() {
@@ -38,13 +45,16 @@ export class OrdersDetailComponent implements OnInit {
 	}
 
 	private _getOrder() {
-		this.route.params.subscribe((params) => {
+		this.route.params.pipe(takeUntil(this.endsubs$)).subscribe((params) => {
 			if (params.id) {
-				this.orderService.getOrder(params.id).subscribe((order) => {
-					this.order = order;
-					this.orderItems = order.orderItems;
-					this.selectedStatus = order.status;
-				});
+				this.orderService
+					.getOrder(params.id)
+					.pipe(takeUntil(this.endsubs$))
+					.subscribe((order) => {
+						this.order = order;
+						this.orderItems = order.orderItems;
+						this.selectedStatus = order.status;
+					});
 			}
 		});
 	}
@@ -52,6 +62,7 @@ export class OrdersDetailComponent implements OnInit {
 	onStatusChange(event) {
 		this.orderService
 			.updateOrder({ status: event.value }, this.order.id)
+			.pipe(takeUntil(this.endsubs$))
 			.subscribe(
 				() => {
 					this.messageService.add({

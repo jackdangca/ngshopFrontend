@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -38,7 +39,70 @@ import { EditorModule } from 'primeng/editor';
 import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
-import { UsersModule, JwtInterceptor } from '@myngshop/users';
+import { AuthGuard, UsersModule, JwtInterceptor } from '@myngshop/users';
+
+const routes: Routes = [
+	{
+		path: '',
+		component: ShellComponent,
+		canActivate: [AuthGuard],
+		children: [
+			{
+				path: '',
+				component: DashboardComponent,
+			},
+			{
+				path: 'categories',
+				component: CategoriesListComponent,
+			},
+			{
+				path: 'categories/form',
+				component: CategoriesFormComponent,
+			},
+			{
+				path: 'categories/form/:id',
+				component: CategoriesFormComponent,
+			},
+			{
+				path: 'products',
+				component: ProductsListComponent,
+			},
+			{
+				path: 'products/form',
+				component: ProductsFormComponent,
+			},
+			{
+				path: 'products/form/:id',
+				component: ProductsFormComponent,
+			},
+			{
+				path: 'users',
+				component: UsersListComponent,
+			},
+			{
+				path: 'users/form',
+				component: UsersFormComponent,
+			},
+			{
+				path: 'users/form/:id',
+				component: UsersFormComponent,
+			},
+			{
+				path: 'orders',
+				component: OrdersListComponent,
+			},
+			{
+				path: 'orders/:id',
+				component: OrdersDetailComponent,
+			},
+		],
+	},
+	{
+		path: '**',
+		redirectTo: '',
+		pathMatch: 'full',
+	},
+];
 
 
 const UX_MODULE = [
@@ -79,10 +143,11 @@ const UX_MODULE = [
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
-		AppRoutingModule,
+		// AppRoutingModule,
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
+		RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
 		UsersModule,
 		...UX_MODULE
 	],

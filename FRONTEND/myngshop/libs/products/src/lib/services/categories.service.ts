@@ -3,13 +3,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../models/category';
 import { Observable } from 'rxjs';
-import { environment } from '@env/environment';
+// import { environment } from '@env/environment';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class CategoriesService {
-	apiURLCategories = environment.apiUrl + 'categories';
+	environment = {
+		apiUrl: 'https://ng-shop-backend.herokuapp.com/api/v1/'
+	}
+	apiURLCategories = this.environment.apiUrl + 'categories';
 	constructor(private http: HttpClient) {}
 
 	getCategories(): Observable<Category[]> {

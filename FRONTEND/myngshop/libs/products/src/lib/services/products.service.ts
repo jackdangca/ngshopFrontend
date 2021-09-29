@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '@env/environment';
+// import { environment } from '@env/environment';
 import { Product } from '../models/product';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ProductsService {
-	apiURLProducts = environment.apiUrl + 'products';
+	environment = {
+		apiUrl: 'https://ng-shop-backend.herokuapp.com/api/v1/'
+	}
+	apiURLProducts = this.environment.apiUrl + 'products';
 
 	constructor(private http: HttpClient) {}
 

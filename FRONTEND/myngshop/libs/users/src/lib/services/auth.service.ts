@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '@env/environment';
+// import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { LocalstorageService } from './localstorage.service';
@@ -10,7 +10,10 @@ import { LocalstorageService } from './localstorage.service';
   providedIn: 'root'
 })
 export class AuthService {
-  apiURLUsers = environment.apiUrl + 'users';
+  environment = {
+    apiUrl: 'https://ng-shop-backend.herokuapp.com/api/v1/'
+  }
+  apiURLUsers = this.environment.apiUrl + 'users';
 
   constructor(
     private http: HttpClient,

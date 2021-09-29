@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
-import { environment } from '@env/environment';
+// import { environment } from '@env/environment';
 import * as countriesLib from 'i18n-iso-countries';
 declare const require: any;
 
@@ -11,7 +11,10 @@ declare const require: any;
 	providedIn: 'root',
 })
 export class UsersService {
-	apiURLUsers = environment.apiUrl + 'users';
+	environment = {
+		apiUrl: 'https://ng-shop-backend.herokuapp.com/api/v1/'
+	}
+	apiURLUsers = this.environment.apiUrl + 'users';
 
 	constructor(private http: HttpClient) {
 		// eslint-disable-next-line @typescript-eslint/no-var-requires

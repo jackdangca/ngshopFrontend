@@ -17,7 +17,6 @@
     "paths": {
       "@myngshop/orders": ["libs/orders/src/index.ts"],
       "@myngshop/products": ["libs/products/src/index.ts"],
-      "@myngshop/ui": ["libs/ui/src/index.ts"],
       "@myngshop/users": ["libs/users/src/index.ts"],
       "@env/*": ["environments/*"]
     }

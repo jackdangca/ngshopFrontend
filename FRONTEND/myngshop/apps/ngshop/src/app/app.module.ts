@@ -9,7 +9,6 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-import { UiModule } from '@myngshop/ui';
 import { ProductsModule } from '@myngshop/products';
 import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
@@ -32,7 +31,6 @@ const routes: Routes = [
 		BrowserModule,
 		BrowserAnimationsModule,
 		RouterModule.forRoot(routes),
-		UiModule,
 		AccordionModule,
 		ProductsModule,
 	],

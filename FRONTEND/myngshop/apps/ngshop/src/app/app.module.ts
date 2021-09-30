@@ -8,10 +8,12 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NavComponent } from './shared/nav/nav.component';
 
 import { ProductsModule } from '@myngshop/products';
 import { AccordionModule } from 'primeng/accordion';
-import { NavComponent } from './shared/nav/nav.component';
+import { UiModule } from '@myngshop/ui';
+
 
 const routes: Routes = [
 	{ path: '', component: HomePageComponent },
@@ -33,6 +35,7 @@ const routes: Routes = [
 		RouterModule.forRoot(routes),
 		AccordionModule,
 		ProductsModule,
+		UiModule
 	],
 	providers: [],
 	bootstrap: [AppComponent],

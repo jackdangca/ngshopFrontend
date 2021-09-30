@@ -19,8 +19,10 @@
 //Shared 
 @import './apps/shop/shared/header.scss';
 @import './apps/shop/shared/footer.scss';
+@import './apps/shop/shared/nav.scss';
 
 //libs
+@import './libs/products/products.scss';
 @import './libs/ui/ui.scss';
 
 .container {

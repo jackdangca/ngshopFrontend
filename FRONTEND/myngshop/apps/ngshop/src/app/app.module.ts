@@ -1,7 +1,8 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -10,10 +11,9 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavComponent } from './shared/nav/nav.component';
 
-import { ProductsModule } from '@myngshop/products';
 import { AccordionModule } from 'primeng/accordion';
 import { UiModule } from '@myngshop/ui';
-
+import { CategoriesService, ProductsModule, ProductsService } from '@myngshop/products';
 
 const routes: Routes = [
 	{ path: '', component: HomePageComponent },
@@ -33,12 +33,13 @@ const routes: Routes = [
 		BrowserModule,
 		BrowserAnimationsModule,
 		RouterModule.forRoot(routes),
+		HttpClientModule,
 		AccordionModule,
 		ProductsModule,
-		UiModule
+		UiModule,
 	],
-	providers: [],
+	providers: [CategoriesService, ProductsService],
 	bootstrap: [AppComponent],
-	schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

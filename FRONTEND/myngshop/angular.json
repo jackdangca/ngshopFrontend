@@ -289,7 +289,7 @@
 			"projectType": "library",
 			"root": "libs/products",
 			"sourceRoot": "libs/products/src",
-			"prefix": "myngshop",
+			"prefix": "products",
 			"architect": {
 				"test": {
 					"builder": "@nrwl/jest:jest",

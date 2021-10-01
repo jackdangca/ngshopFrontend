@@ -11,6 +11,7 @@
     }
   ],
   "compilerOptions":{
-    "noImplicitReturns": false
+    "noImplicitReturns": false,
+    "noImplicitAny": false,
   }
 }

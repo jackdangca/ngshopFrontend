@@ -24,10 +24,10 @@
 							<small
 								*ngIf="loginForm.email.invalid && isSubmitted"
 								class="p-error"
-								><span *ngIf="loginForm.email.errors.required"
+								><span *ngIf="loginForm.email.errors?.required"
 									>email is required</span
 								>
-								<span *ngIf="loginForm.email.errors.email"
+								<span *ngIf="loginForm.email.errors?.email"
 									>email is invalid</span
 								></small
 							>

@@ -1,16 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @angular-eslint/component-selector */
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Product } from '../../models/product';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
-  selector: 'product-page',
-  templateUrl: './product-page.component.html',
-  styles: [
-  ]
+	selector: 'products-product-page',
+	templateUrl: './product-page.component.html',
+	styles: [],
 })
-export class ProductPageComponent implements OnInit {
+export class ProductPageComponent implements OnInit, OnDestroy {
+	product!: Product;
+	endSubs$: Subject<any> = new Subject();
+	quantity!: number;
 
-  constructor() { }
+	constructor(
+		private prodService: ProductsService,
+		private route: ActivatedRoute
+	) {}
 
-  ngOnInit(): void {
+	ngOnInit(): void {
+		this.route.params.subscribe((params) => {
+			if (params.productid) {
+				this._getProduct(params.productid);
+			}
+		});
+	}
+
+	ngOnDestroy(): void {
+		this.endSubs$.next();
+		this.endSubs$.complete();
+	}
+
+	addProductToCart() {
+    console.log('Added');
   }
 
+	private _getProduct(id: string) {
+		this.prodService
+			.getProduct(id)
+			.pipe(takeUntil(this.endSubs$))
+			.subscribe((resProduct) => {
+				this.product = resProduct;
+			});
+	}
 }

@@ -31,7 +31,7 @@ export class ProductsListComponent implements OnInit {
 				? (this.isCategoryPage = true)
 				: (this.isCategoryPage = false);
 		});
-		console.log(this.isCategoryPage);
+		// console.log(this.isCategoryPage);
 		this._getCategories();
 	}
 

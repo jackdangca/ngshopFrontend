@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/component-selector */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Category } from '../../models/category';
@@ -12,7 +12,7 @@ import { CategoriesService } from '../../services/categories.service';
 	templateUrl: './categories-banner.component.html',
 	styles: [],
 })
-export class CategoriesBannerComponent implements OnInit {
+export class CategoriesBannerComponent implements OnInit, OnDestroy {
 	categories: Category[] = [];
 	endSubs$: Subject<any> = new Subject();
 	constructor(private categoriesService: CategoriesService) {}
@@ -24,5 +24,10 @@ export class CategoriesBannerComponent implements OnInit {
 			.subscribe((categories) => {
 				this.categories = categories;
 			});
+	}
+
+	ngOnDestroy() {
+		this.endSubs$.next();
+		this.endSubs$.complete();
 	}
 }

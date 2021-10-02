@@ -1,5 +1,4 @@
 /* eslint-disable @angular-eslint/component-selector */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '../../models/category';
@@ -15,7 +14,8 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsListComponent implements OnInit {
 	products: Product[] = [];
 	categories: Category[] = [];
-	isCategoryPage;
+	isCategoryPage!: boolean;
+
 	constructor(
 		private prodService: ProductsService,
 		private catService: CategoriesService,
@@ -31,10 +31,11 @@ export class ProductsListComponent implements OnInit {
 				? (this.isCategoryPage = true)
 				: (this.isCategoryPage = false);
 		});
+		console.log(this.isCategoryPage);
 		this._getCategories();
 	}
 
-	private _getProducts(categoriesFilter?: any) {
+	private _getProducts(categoriesFilter?: string[]) {
 		this.prodService
 			.getProducts(categoriesFilter)
 			.subscribe((resProducts) => {

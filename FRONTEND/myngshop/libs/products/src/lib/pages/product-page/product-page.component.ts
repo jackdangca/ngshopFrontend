@@ -36,8 +36,8 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 	}
 
 	addProductToCart() {
-    console.log('Added');
-  }
+		console.log('Added');
+	}
 
 	private _getProduct(id: string) {
 		this.prodService
